@@ -122,7 +122,7 @@ async def _chat_clear(ctx, amount = 100):
 #AUTOROLE
 @client.event
 async def on_member_join(member):
-    role = discord.utils.get(member.guild.roles, name = "Captain's Playthings")
+    role = discord.utils.get(member.guild.roles, name = "Playground Member")
     channel = client.get_channel(815915068654223371)
     mention = member.mention
 
@@ -175,7 +175,7 @@ async def _help_fun(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Fun/responses related commands list**",
-        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\nThis section is still being worked on, sorry.",
+        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -199,7 +199,7 @@ async def _help_soundboard(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Soundboard related commands list**",
-        description = "**These are commands that relate to voice channel soundboard features of CV6's PlaygroundBot**\n\nJoin VC: **cv6 join**\nLeave VC: **cv6 leave**\nAirhorn: **cv6 sb airhorn**\nAli-a intro: **cv6 sb alia**\nBegone thot: **cv6 sb begonethot**\nDamn son where'd you find this: **cv6 sb damnson**\nDankstorm: **cv6 sb dankstorm**\nDeez nuts: **cv6 sb deeznuts**\nDeja Vu: **cv6 sb dejavu**\nLook at this dude: **cv6 sb dis_dude**\nAnother fag left the chat: **cv6 sb fleft**\nFart: **cv6 sb fart**\nHah gaaayyy: **cv6 sb hahgay**\nIt's called hentai and it's art: **cv6 sb henart**\nIlluminati song: **cv6 sb illuminati**\nBitch Lasagna: **cv6 sb lasagna**\nLoser: **cv6 sb loser**\nNoob: **cv6 sb noob**\nOof sound: **cv6 sb oof**\nPickle Rick: **cv6 sb picklerick**\nNice: **cv6 sb nice**\nWhy don't we just relax and turn on the radio: **cv6 sb radio**\nRick roll: **cv6 sb rickroll**\nThis is sparta: **cv6 sb sparta**\nTitanic flute fail: **cv6 sb titanic**\nGTA V Wasted: **cv6 sb wasted**\nWubba lubba dub dub: **cv6 sb wubba**\n",
+        description = "**These are commands that relate to voice channel soundboard features of CV6's PlaygroundBot**\n\nJoin VC: **cv6 join**\nLeave VC: **cv6 leave**\nAirhorn: **cv6 sb airhorn**\nAli-a intro: **cv6 sb alia**\nBegone thot: **cv6 sb begonethot**\nDamn son where'd you find this: **cv6 sb damnson**\nDankstorm: **cv6 sb dankstorm**\nDeez nuts: **cv6 sb deeznuts**\nDeja Vu: **cv6 sb dejavu**\nLook at this dude: **cv6 sb dis_dude**\nAnother fag left the chat: **cv6 sb fleft**\nFart: **cv6 sb fart**\nHah gaaayyy: **cv6 sb hahgay**\nIt's called hentai and it's art: **cv6 sb henart**\nIlluminati song: **cv6 sb illuminati**\nBitch Lasagna: **cv6 sb lasagna**\nLoser: **cv6 sb loser**\nNoob: **cv6 sb noob**\nOof sound: **cv6 sb oof**\nPickle Rick: **cv6 sb picklerick**\nNice: **cv6 sb nice**\nWhy don't we just relax and turn on the radio: **cv6 sb radio**\nRick roll: **cv6 sb rickroll**\nThis is sparta: **cv6 sb sparta**\nTitanic flute fail: **cv6 sb titanic**\nGTA V Wasted: **cv6 sb wasted**\nWide Putin: **cv6 wideputin**\nWubba lubba dub dub: **cv6 sb wubba**\n",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -235,7 +235,7 @@ async def _help_moderation(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Moderation related commands list**",
-        description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nHelp directory: **cv6 help**\n",
+        description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nHelp directory: **cv6 help**\n",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -517,7 +517,7 @@ async def _soundboard(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Soundboard commands list**",
-        description = "**These are commands that relate to voice channel soundboard features of CV6's PlaygroundBot**\n\nJoin VC: **cv6 join**\nLeave VC: **cv6 leave**\nAirhorn: **cv6 sb airhorn**\nAli-a intro: **cv6 sb alia**\nBegone thot: **cv6 sb begonethot**\nDamn son where'd you find this: **cv6 sb damnson**\nDankstorm: **cv6 sb dankstorm**\nDeez nuts: **cv6 sb deeznuts**\nDeja Vu: **cv6 sb dejavu**\nLook at this dude: **cv6 sb dis_dude**\nAnother fag left the chat: **cv6 sb fleft**\nFart: **cv6 sb fart**\nHah gaaayyy: **cv6 sb hahgay**\nIt's called hentai and it's art: **cv6 sb henart**\nIlluminati song: **cv6 sb illuminati**\nBitch Lasagna: **cv6 sb lasagna**\nLoser: **cv6 sb loser**\nNoob: **cv6 sb noob**\nOof sound: **cv6 sb oof**\nPickle Rick: **cv6 sb picklerick**\nNice: **cv6 sb nice**\nWhy don't we just relax and turn on the radio: **cv6 sb radio**\nRick roll: **cv6 sb rickroll**\nThis is sparta: **cv6 sb sparta**\nTitanic flute fail: **cv6 sb titanic**\nGTA V Wasted: **cv6 sb wasted**\nWubba lubba dub dub: **cv6 sb wubba**\n",
+        description = "**These are commands that relate to voice channel soundboard features of CV6's PlaygroundBot**\n\nJoin VC: **cv6 join**\nLeave VC: **cv6 leave**\nAirhorn: **cv6 sb airhorn**\nAli-a intro: **cv6 sb alia**\nBegone thot: **cv6 sb begonethot**\nDamn son where'd you find this: **cv6 sb damnson**\nDankstorm: **cv6 sb dankstorm**\nDeez nuts: **cv6 sb deeznuts**\nDeja Vu: **cv6 sb dejavu**\nLook at this dude: **cv6 sb dis_dude**\nAnother fag left the chat: **cv6 sb fleft**\nFart: **cv6 sb fart**\nHah gaaayyy: **cv6 sb hahgay**\nIt's called hentai and it's art: **cv6 sb henart**\nIlluminati song: **cv6 sb illuminati**\nBitch Lasagna: **cv6 sb lasagna**\nLoser: **cv6 sb loser**\nNoob: **cv6 sb noob**\nOof sound: **cv6 sb oof**\nPickle Rick: **cv6 sb picklerick**\nNice: **cv6 sb nice**\nWhy don't we just relax and turn on the radio: **cv6 sb radio**\nRick roll: **cv6 sb rickroll**\nThis is sparta: **cv6 sb sparta**\nTitanic flute fail: **cv6 sb titanic**\nGTA V Wasted: **cv6 sb wasted**\nWide Putin: **cv6 wideputin**\nWubba lubba dub dub: **cv6 sb wubba**\n",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -761,6 +761,16 @@ async def _soundboard_wasted(ctx):
     print("\nPlayed wasted sound effect\n")
     vcvoice = discord.utils.get(client.voice_clients, guild = ctx.guild)
     vcvoice.play(discord.FFmpegPCMAudio("soundboard/wasted.mp3"))
+    vcvoice.source = discord.PCMVolumeTransformer(vcvoice.source)
+    vcvoice.source.value = 0.05
+
+#WIDE PUTIN SONG
+@_soundboard.command(aliases = ["wideputin", "Wideputin"])
+async def _soundboard_wideputin(ctx):
+    await ctx.send("Playing **wideputin** sound effect from soundboard")
+    print("\nPlayed wubba sound effect\n")
+    vcvoice = discord.utils.get(client.voice_clients, guild = ctx.guild)
+    vcvoice.play(discord.FFmpegPCMAudio("soundboard/wideputin.mp3"))
     vcvoice.source = discord.PCMVolumeTransformer(vcvoice.source)
     vcvoice.source.value = 0.05
 
@@ -1073,10 +1083,34 @@ async def _shutupcommand(ctx):
     await ctx.send("https://tenor.com/view/meryl-streep-shut-up-yell-gif-15386483")
 
 
-#LOCATE USER COMMAND
-@client.group(aliases = ["locate", "Locate"])
-async def _locate(ctx):
-    await ctx.send("Do '/locate (user_name)' to locate a server member")
+#DWEAM COMMAND LOL
+@client.command(aliases = ["dweam", "Dweam"])
+async def _dweamlolcommand(ctx):
+    await ctx.send("In this video, me and my friends coded it so that we're all anime cat girls, this was INSANE! To make it harder, we decided to give ourselves nicknames, so in the video we will be calling ourselves Dweam, Gogy and Sapcat. Can we beat Minecraft? You're about to find out. Also only a small percentage of people that watch my videos are actually subscribed so if you end up liking this video consider subscribing, it's free and you can always change your mind in the future, we are getting so close to 69420 million subscribers. Enjoy the video!")
+
+
+#SEND NOTHING COMMAND
+@client.command(aliases = ["nothing"])
+async def _sendnothinglol(ctx):
+    await ctx.send("⠀⠀⠀⠀⠀")
+
+
+#DISCORDMOD FUNNY
+@client.command(aliases = ["discordmod", "Discordmod"])
+async def _funnydiscordmod(ctx):
+    await ctx.send("https://i.kym-cdn.com/entries/icons/original/000/035/767/cover4.jpg")
+
+
+#CUSSWORDS FUNNY
+@client.command(aliases = ["cusswords", "cussword", "Cusswords", "Cussword"])
+async def _funnycusswords(ctx):
+    await ctx.send("no more saying cuss words! it. is. not. good. i'm putting a video on youtube about no more saying cuss words. no more saying cuss words, guys! it's inappropriate, and violent! if you say a cuss word then you're like.... going to jail and you're.. like... when you go to jail.. if u- when you go to jail if you say.. if you say a cuss word you go to jail and when you go to jail, you said a cuss word.. then you're only gonna eat broccoli and other vegetables for your whole life. you don't wanna eat vegetables sometimes people like eating sweets but... i eat broccoli.. so, i'm okay with broccoli but i do not wanna go to jail.")
+
+
+#FUNNY PINGED
+@client.command(aliases = ["pinged", "Pinged"])
+async def _funnygotpinged(ctx):
+    await ctx.send("I GOT PINGED FUCK SHIT SHIT SHIT MY PC IS GONNA EXPLODE IM GONNA DIE IM GONNA BE HOMLESS NOW WHY DID YOU DO THIS TO ME MY PC MADE A SMALL DING NOISE AHHHHHHHHHHHHHHHHHHHHHHHHHH WHY WHY WHY WHY IM SO SAD YOU BESTOWED THIS ANCIENT FORM OF TORTURE UPON ME YOU SHOULD BE UNMODDED AND BANNED IMMDIATELY WHYYYYYYYYYYYYYYYY")
 
 
 #FAIR
