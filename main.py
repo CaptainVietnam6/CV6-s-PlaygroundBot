@@ -1221,6 +1221,30 @@ async def _detects_code2(message):
         await message.channel.send("wow CSS code")
 
 
+
+#RANDOM CHANCE ANNOYED RESPONSE THING
+#whenever the bot detects a message by a person there is a 5% chance it replies
+@client.listen("on_message")
+async def _random_annoyed(message):
+    annoyed_responses = [
+        "you should talk less",
+        "you talk too much",
+        "ugh, stop talking already",
+        "you're so annoying tbh",
+        "shut up already",
+        "goddamn you're annoying",
+        "you done talking?"
+    ]
+
+    random_chance = random.randint(1, 20)
+
+    if message.author.bot:
+        return
+    else:
+        if random_chance == 10:
+            await message.channel.send(random.choice(annoyed_responses))
+
+
 '''END OF RESPONSES OR RELATED COMMANDS'''
 
 '''START OF NSFW COMMANDS'''
@@ -1229,7 +1253,7 @@ async def _detects_code2(message):
 #HENTAI COMMAND
 @client.command(aliases = ["hentai", "Hentai"])
 async def _hentai_nsfw_command(ctx):
-    website_num = random.randint(1, 4)
+    website_num = random.randint(1, 5)
 
     if website_num == 1:
         post_num = random.randint(1000000, 3000000)
@@ -1262,6 +1286,14 @@ async def _hentai_nsfw_command(ctx):
                 color = bot_color
             )
         embed.set_image(url = f"https://nhentai.net/g/{post_num}/1/")
+    
+    elif website_num == 5:
+        post_num = random.randint(1, 40)
+        embed = discord.Embed(
+                title = f"Hentai post #{post_num} from commentseduire.net",
+                color = bot_color
+            )
+        embed.set_image(url = f"http://commentseduire.net/wp-content/uploads/2017/06/hentai-gif-{post_num}.gif")
 
     if ctx.channel.is_nsfw():
         await ctx.send(embed = embed)
@@ -1269,7 +1301,7 @@ async def _hentai_nsfw_command(ctx):
         await ctx.send("This command can only be used in a NSFW channel")
 
 
-'''END OF SNFW COMMANDS'''
+'''END OF NSFW COMMANDS'''
 
 
 '''START OF EMOJI RESPONSES COMMANDS'''
