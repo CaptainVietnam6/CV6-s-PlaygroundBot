@@ -1223,6 +1223,55 @@ async def _detects_code2(message):
 
 '''END OF RESPONSES OR RELATED COMMANDS'''
 
+'''START OF NSFW COMMANDS'''
+
+
+#HENTAI COMMAND
+@client.command(aliases = ["hentai", "Hentai"])
+async def _hentai_nsfw_command(ctx):
+    website_num = random.randint(1, 4)
+
+    if website_num == 1:
+        post_num = random.randint(1000000, 3000000)
+        embed = discord.Embed(
+            title = f"Hentai post #{post_num} from danbooru.me",
+            color = bot_color
+        )
+        embed.set_image(url = f"http://danbooru.me/posts/{post_num}")
+
+    elif website_num == 2:
+        post_num = random.randint(50, 755000)
+        embed = discord.Embed(
+                title = f"Hentai post #{post_num} from yande.re",
+                color = bot_color
+            )
+        embed.set_image(url = f"https://yande.re/post/show/{post_num}")
+
+    elif website_num == 3:
+        post_num = random.randint(1000000, 5000000)
+        embed = discord.Embed(
+                title = f"Hentai post #{post_num} from gelbooru.com",
+                color = bot_color
+            )
+        embed.set_image(url = f"https://gelbooru.com/index.php?page=post&s=view&id={post_num}")
+    
+    elif website_num == 4:
+        post_num = random.randint(1, 500000)
+        embed = discord.Embed(
+                title = f"Hentai post #{post_num} from nhentai.net",
+                color = bot_color
+            )
+        embed.set_image(url = f"https://nhentai.net/g/{post_num}/1/")
+
+    if ctx.channel.is_nsfw():
+        await ctx.send(embed = embed)
+    else:
+        await ctx.send("This command can only be used in a NSFW channel")
+
+
+'''END OF SNFW COMMANDS'''
+
+
 '''START OF EMOJI RESPONSES COMMANDS'''
 
 #SAMPLE ON MESSAGE CODE
