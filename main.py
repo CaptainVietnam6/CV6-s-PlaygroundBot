@@ -1236,12 +1236,10 @@ async def _random_annoyed(message):
         "you done talking?"
     ]
 
-    random_chance = random.randint(1, 20)
-
     if message.author.bot:
         return
     else:
-        if random_chance == 10:
+        if random.randint(0, 100) < 5:
             await message.channel.send(random.choice(annoyed_responses))
 
 
