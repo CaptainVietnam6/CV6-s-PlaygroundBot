@@ -175,7 +175,7 @@ async def _help_fun(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Fun/responses related commands list**",
-        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**",
+        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -1113,6 +1113,21 @@ async def _funnygotpinged(ctx):
     await ctx.send("I GOT PINGED FUCK SHIT SHIT SHIT MY PC IS GONNA EXPLODE IM GONNA DIE IM GONNA BE HOMLESS NOW WHY DID YOU DO THIS TO ME MY PC MADE A SMALL DING NOISE AHHHHHHHHHHHHHHHHHHHHHHHHHH WHY WHY WHY WHY IM SO SAD YOU BESTOWED THIS ANCIENT FORM OF TORTURE UPON ME YOU SHOULD BE UNMODDED AND BANNED IMMDIATELY WHYYYYYYYYYYYYYYYY")
 
 
+#/REEE COMMAND; FUNNY THING BY BLUEISH
+@client.command(aliases = ["reee", "REEE"])
+async def _reeefunnyblueish(ctx):
+    await ctx.send("Hey guys if your enjoying this video then SMASH THAT LIKE BUTTON AND DONT FORGET TO SUBSCRIBE BECAUSE ACCORDING TO UTUBES STATISTICS ONLY FUCKING 2.6796291 OF MY VIEWERS ARE SUBSCRIBED AND WITH FURTHER A DO LETS GET RIGHT INTO THE VIDEOOOOOOOOO")
+
+
+#SPONSOR ME COMMAND
+@client.command(aliases = ["sponsorme", "sponserme"])
+async def _sponsormefunnaeblueish(ctx):
+    await ctx.send("Oh and also HAVE U HEARD ABOUT RAYCON EARBUDS???? THEYRE JUST SAMSUNG GALAXY EARBUDS BUT FATTER AND LESS EXPENSIVE GO BUY THEM WITH MY DISCOUNT CODE AT RAYCON.COM/IFUCKEDURMOM I REPEAT RAYCON.COM/IFUCKEDURMOM GO BUY THEM RIGHT NOW")
+
+
+#BELOW HERE IS THE ALWAYS ACTIVE CLIENT.LISTEN AND ON_MESSAGE COMMANDS
+
+
 #FAIR
 @client.listen("on_message")
 async def replyping(message):
@@ -1223,10 +1238,11 @@ async def _detects_code2(message):
 
 
 #RANDOM CHANCE ANNOYED RESPONSE THING
-#whenever the bot detects a message by a person there is a 5% chance it replies
+#whenever the bot detects a message by a person there is a 2% chance it replies
 @client.listen("on_message")
 async def _random_annoyed(message):
-    annoyed_responses = [
+    mention = message.author.id
+    annoyed_responses_list = [
         "you should talk less",
         "you talk too much",
         "ugh, stop talking already",
@@ -1235,12 +1251,45 @@ async def _random_annoyed(message):
         "goddamn you're annoying",
         "you done talking?"
     ]
+    annoyed_responses = random.choice(annoyed_responses_list)
 
     if message.author.bot:
         return
     else:
-        if random.randint(0, 100) < 5:
-            await message.channel.send(random.choice(annoyed_responses))
+        if random.randint(0, 100) < 2:
+            await message.channel.send(f"<@{mention}> {annoyed_responses}")
+
+
+#REPLIES STFU COMMAND
+@client.listen("on_message")
+async def _ramdon_stfu_detect(message):
+    mention = message.author.id
+    stfu_reponses_list = [
+        "you stfu",
+        "bruh who you telling to stfu",
+        "YOU stfu",
+        "i think it's you who needs to shut up",
+        "maybe you should shut up instead",
+        "idot you stfu"
+    ]
+
+    stfu_responses = random.choice(stfu_reponses_list)
+
+    if message.author.bot:
+        return
+    else:
+        if "stfu" in message.content:
+            await message.channel.send(f"<@{mention}> {stfu_responses}")
+        if "STFU" in message.content:
+            await message.channel.send(f"<@{mention}> {stfu_responses}")
+        if "Stfu" in message.content:
+            await message.channel.send(f"<@{mention}> {stfu_responses}")
+        if "shut up" in message.content:
+            await message.channel.send(f"<@{mention}> {stfu_responses}")
+        if "Shut up" in message.content:
+            await message.channel.send(f"<@{mention}> {stfu_responses}")
+        if "SHUT UP" in message.content:
+            await message.channel.send(f"<@{mention}> {stfu_responses}")
 
 
 '''END OF RESPONSES OR RELATED COMMANDS'''
