@@ -70,7 +70,7 @@ for filename in os.listdir("./cogs"):
 @client.event
 async def on_ready():
     await client.change_presence(status = discord.Status.online, activity = discord.Game("Programmed by CaptainVietnam6#0001 in Python 3.8.2"))
-    await asyncio.sleep(3)
+    await asyncio.sleep(float(1.5))
     print("CV6's PlaygroundBot is ready")
 
     #notifs for CV6's Playground server
