@@ -88,7 +88,7 @@ async def on_ready():
 #RETURNS BOT'S PING IN MILLISECONDS
 @client.command()
 async def ping(ctx):
-    await ctx.send(f"Pong motherfucker {client.latency * 1000}ms")
+    await ctx.send(f"Pong! {client.latency * 1000}ms")
 
 
 #SERVER COLOR HEX CODE REMINDER THINGY
