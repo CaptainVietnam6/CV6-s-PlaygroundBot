@@ -15,6 +15,8 @@ import time
 import youtube_dl
 import shutil
 import asyncio
+import PyDictionary
+from PyDictionary import PyDictionary
 
 #imports from other files
 from keep_alive import keep_alive
@@ -72,7 +74,7 @@ async def on_ready():
     print("CV6's PlaygroundBot is ready")
 
     #notifs for CV6's Playground server
-    channel = client.get_channel(816175323766980618)
+    channel = client.get_channel(816179144961818634)
     await channel.send("CV6's PlaygroundBot is online")
     #notifs for CV6's Bots server
     channel = client.get_channel(812974446801059860)
@@ -175,7 +177,7 @@ async def _help_fun(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Fun/responses related commands list**",
-        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**",
+        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -1007,15 +1009,74 @@ async def _zerotwo(ctx):
     await ctx.send("fuckin simp lmfao")
 
 
-#DICTIONARY COMMAND, GIVES YOU A DICTIONARY LINK TO THE WORD YOU MENTIONED
+#DICTIONARY COMMAND, GIVES YOU THE DEFINITION, SYNONYM, ANTONYM, AND LINK OF THE WORD MENTIONED
 @client.command(aliases = ["Dictionary", "dictionary", "Dict", "dict"])
 @cooldown(3, 30, BucketType.default)
-async def _dictionarylink(ctx, user_dictionary_request):
+async def _dictionarycommand(ctx, user_dictionary_request):
+    dictionary = PyDictionary
     print(f"Someone used the dictionary command for the word {user_dictionary_request}")
-    await ctx.send(f"Getting you the dictionary link for the word {user_dictionary_request}")
-    await asyncio.sleep(float(0.5))
-    await ctx.send(f"Here you go!\nhttps://www.dictionary.com/browse/{user_dictionary_request}?s=t")
 
+    author_name = ctx.author.display_name
+    word_meaning = dictionary.meaning(user_dictionary_request)
+    word_synonym = dictionary.synonym(user_dictionary_request)
+    word_antonym = dictionary.antonym(user_dictionary_request)
+
+    embed = discord.Embed(
+        title = f"Dictionary definition, synonym, and antonym for the word {user_dictionary_request}",
+        description = f"**Meaning:** {word_meaning}\n\n**Synonyms:** {word_synonym}\n\n**Antonyms:** {word_antonym}",
+        color = bot_color
+    )
+    embed.set_footer(text = f"Requested by {author_name}")
+
+    await ctx.send(f"Getting you the definition of the word **{user_dictionary_request}**")
+    await asyncio.sleep(float(0.5))
+    await ctx.send(embed = embed)
+    await asyncio.sleep(float(0.5))
+    await ctx.send(f"Here is the link:\nhttps://www.dictionary.com/browse/{user_dictionary_request}?s=t")
+
+
+#SYNONYM COMMAND, GIVES YOU THE SYNONYM OF THE WORD MENTIONED
+@client.command(aliases = ["synonym", "Synonym"])
+@cooldown(3, 30, BucketType.default)
+async def _synonymcommand(ctx, user_synonym_request):
+    dictionary = PyDictionary
+    print(f"Someone used the synonym command for the word {user_synonym_request}")
+
+    author_name = ctx.author.display_name
+    word_synonym = dictionary.synonym(user_synonym_request)
+
+    embed = discord.Embed(
+        title = f"Synonyms for the word **{user_synonym_request}**",
+        description = f"**Synonyms:** {word_synonym}",
+        color = bot_color
+    )
+    embed.set_footer(text = f"Requested by {author_name}")
+
+    await ctx.send(f"Getting you the synonyms for the word {user_synonym_request}")
+    await asyncio.sleep(float(0.5))
+    await ctx.send(embed = embed)
+
+
+#ANTONYM COMMAND, GIVES YOU THE ANTONYM OF THE WORD MENTIONED
+@client.command(aliases = ["antonym", "Antonym"])
+@cooldown(3, 30, BucketType.default)
+async def _antonymcommand(ctx, user_antonym_request):
+    dictionary = PyDictionary
+    print(f"Someone used the antonym command for the word {user_antonym_request}")
+
+    author_name = ctx.author.display_name
+    word_antonym = dictionary.antonym(user_antonym_request)
+
+    embed = discord.Embed(
+        title = f"Antonyms for the word **{user_antonym_request}**",
+        description = f"**Antonyms:** {word_antonym}",
+        color = bot_color
+    )
+    embed.set_footer(text = f"Requested by {author_name}")
+
+    await ctx.send(f"Getting you the antonyms for the word {user_antonym_request}")
+    await asyncio.sleep(float(0.5))
+    await ctx.send(embed = embed)
 
 
 #REPEAT COMMAND; BOT REPEATS AFTER USER
@@ -1123,6 +1184,52 @@ async def _reeefunnyblueish(ctx):
 @client.command(aliases = ["sponsorme", "sponserme"])
 async def _sponsormefunnaeblueish(ctx):
     await ctx.send("Oh and also HAVE U HEARD ABOUT RAYCON EARBUDS???? THEYRE JUST SAMSUNG GALAXY EARBUDS BUT FATTER AND LESS EXPENSIVE GO BUY THEM WITH MY DISCOUNT CODE AT RAYCON.COM/IFUCKEDURMOM I REPEAT RAYCON.COM/IFUCKEDURMOM GO BUY THEM RIGHT NOW")
+
+
+#PI CALCULATE COMMAND TO REQUESTED DIGITS
+@client.command(aliases = ["pi", "Pi", "PI", "π"])
+async def _pi_digits_calc(ctx, pi_digits):
+    DIGITS = int(pi_digits)
+    decimal_places = DIGITS - 1
+    author_name = ctx.author.display_name
+
+    if DIGITS > 0 and DIGITS <= 2000:
+        def pi_digits(x):
+            #Generate x digits of Pi
+            k,a,b,a1,b1 = 2,4,1,12,4
+            while x > 0:
+                p,q,k = k * k, 2 * k + 1, k + 1
+                a,b,a1,b1 = a1, b1, p*a + q*a1, p*b + q*b1
+                d,d1 = a/b, a1/b1
+
+                while d == d1 and x > 0:
+                    yield int(d)
+                    x -= 1
+                    a,a1 = 10*(a % b), 10*(a1 % b1)
+                    d,d1 = a/b, a1/b1
+
+        digits = [str(n) for n in list(pi_digits(DIGITS))]
+        pi_output = "%s.%s\n" % (digits.pop(0), "".join(digits))
+
+        embed = discord.Embed(
+            title = f"Pi to the {decimal_places}th decimal place (or {DIGITS} digits)",
+            description = f"{pi_output}",
+            color = bot_color
+        )
+        embed.set_footer(text = f"Requested by {author_name}")
+        
+        print(f"Someone used the Pi calculator command to {DIGITS} digits")
+        await ctx.send(f"Calculating Pi to {DIGITS} digits...")
+        await asyncio.sleep(float(0.5))
+        await ctx.send(embed = embed)
+    
+    elif DIGITS < 0:
+        print("Pi calculator error: requested digits under 0")
+        await ctx.send("Error: requested digits cannot be under 0 or be negative")
+    
+    elif DIGITS > 2000:
+        print("Pi calculator error: requested digits over 2000")
+        await ctx.send("Error: requested digits cannot be over 2000 (this is to reduce calculation times and load on server)")
 
 
 #BELOW HERE IS THE ALWAYS ACTIVE CLIENT.LISTEN AND ON_MESSAGE COMMANDS
@@ -1616,4 +1723,4 @@ async def _pepefogemojisend(ctx):
 keep_alive()
 
 #BOT TOKEN TO CONNECT TO DISCORD'S API
-client.run(BOT_TOKEN) #token can be found in the file 'BOT_TOKEN.py'
+client.run(BOT_TOKEN) #token can be found in 'BOT_TOKEN.py'
