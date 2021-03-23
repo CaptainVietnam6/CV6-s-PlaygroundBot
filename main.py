@@ -34,7 +34,7 @@ intents = discord.Intents().all()
 
 
 #PREFIX THE BOT USES
-bot_prefixes = ["cv6 ", "CV6 ", "cv6", "CV6", "/"]
+bot_prefixes = ["cv6 ", "CV6 ", "Cv6 ", "cV6 ", "cv6", "CV6", "Cv6", "cV6", "/"]
 client = commands.Bot(command_prefix = bot_prefixes, intents = intents)
 
 
@@ -177,7 +177,7 @@ async def _help_fun(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Fun/responses related commands list**",
-        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**",
+        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**\nDream banned lmao: **cv6 dreamban**",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -237,7 +237,7 @@ async def _help_moderation(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Moderation related commands list**",
-        description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nHelp directory: **cv6 help**\n",
+        description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nTime command: **cv6 time**\nHelp directory: **cv6 help**\n",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -1186,7 +1186,7 @@ async def _sponsormefunnaeblueish(ctx):
     await ctx.send("Oh and also HAVE U HEARD ABOUT RAYCON EARBUDS???? THEYRE JUST SAMSUNG GALAXY EARBUDS BUT FATTER AND LESS EXPENSIVE GO BUY THEM WITH MY DISCOUNT CODE AT RAYCON.COM/IFUCKEDURMOM I REPEAT RAYCON.COM/IFUCKEDURMOM GO BUY THEM RIGHT NOW")
 
 
-#PI CALCULATE COMMAND TO REQUESTED DIGITS
+# CALCULATE COMMAND TO REQUESTED DIGITS
 @client.command(aliases = ["pi", "Pi", "PI", "π"])
 async def _pi_digits_calc(ctx, pi_digits):
     DIGITS = int(pi_digits)
@@ -1230,6 +1230,30 @@ async def _pi_digits_calc(ctx, pi_digits):
     elif DIGITS > 2000:
         print("Pi calculator error: requested digits over 2000")
         await ctx.send("Error: requested digits cannot be over 2000 (this is to reduce calculation times and load on server)")
+
+
+#DREAM GOT BANNED LOL
+@client.command(aliases = ["dreamban", "Dreamban", "dreambanned", "Dreambanned",])
+async def _dreambanned(ctx):
+    await ctx.send("https://media.discordapp.net/attachments/574267524380753942/760770714449477664/image0.png")
+    await asyncio.sleep(float(0.5))
+    await ctx.send("lmao dream got banned lmao")
+
+
+#TIME COMMAND
+@client.command(aliases = ["time", "Time"])
+async def _hsttime(ctx):
+    author_name = ctx.author.display_name
+    seconds = time.time()
+    local_time = time.ctime(seconds - 10 * 60 * 60)
+
+    embed = discord.Embed(
+        title = "HST Local Time",
+        description = f"The local time is **{local_time}** (Hawaii-Aleutian standard time)",
+        color = bot_color
+    )
+    embed.set_footer(text = f"Requested by {author_name}")
+    await ctx.send(embed = embed)
 
 
 #BELOW HERE IS THE ALWAYS ACTIVE CLIENT.LISTEN AND ON_MESSAGE COMMANDS
