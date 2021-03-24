@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "cv6s-playgroundbot"
+name = "CV6's PlaygroundBot"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "This bot is CaptainVietnam6 (Kiet)'s flagship discord bot and is intended for the CV6's Playground Server"
+authors = ["Kiet Pham, CaptainVietnam6 <kiet.riley2005@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

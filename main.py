@@ -89,6 +89,7 @@ async def on_ready():
 @client.command()
 async def ping(ctx):
     await ctx.send(f"Pong! {client.latency * 1000}ms")
+    print(f"ping: {client.latency * 1000}ms")
 
 
 #SERVER COLOR HEX CODE REMINDER THINGY
@@ -253,7 +254,7 @@ async def _help_moderation(ctx):
 
 
 #TEST COMMAND
-@client.command(aliases = ["ban", "Ban", "kick", "Kick"])
+@client.command(aliases = ["ban", "Ban", "kick", "Kick", "mute", "Mute"])
 async def _repeat(ctx):
     await ctx.send("shut up.")
 

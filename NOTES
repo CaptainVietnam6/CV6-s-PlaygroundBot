@@ -6,7 +6,7 @@ first off, WHAT THE NOTES MEAN!!!
 
 if i have a message like
     '''START OF MUSIC AND VOICE CHANNEL RELATED COMMANDS'''
-this means the start of a MAJOR section and any commands you add that fits into the catergory goes there. that message specifically marks the beginning of a major section, the same message but with "END OF...." marks the end of a section.
+this means the start of a MAJOR section and any commands you add that fits into the catergory goes there. that message specifically marks the beginning of a major section, the same message but with "END OF...." marks the end of a major section.
 
 if i have a message like
     #VOICE CHANNEL JOIN COMMAND
@@ -16,7 +16,10 @@ if i have a message like
     #code above to specify options in ydl
 this means that this is a minor note in my code to help me or you, to understand or remember what it does. This is to prevent me or you in the future going "hmmm what does this do again?" KEEP IN MIND THESE ARE ALL LOWERCASE!
 
-REQUIRED PACKAGES: discord.py, discord, flask, youtube-dl, PyNaCl
+REQUIRED PACKAGES: discord.py, discord, flask, youtube-dl, PyNaCl, PyDictionary
+
+Remember to keep 2 empty lines between category markings and also different commands, keep one (1) empty line between related commands that use the same command group
+
 
 INDEX:
 
