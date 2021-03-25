@@ -39,7 +39,7 @@ client = commands.Bot(command_prefix = bot_prefixes, intents = intents)
 
 
 #REMOVES DEFAULT HELP COMMAND
-client.remove_command("help")
+@client.remove_command("help")
 
 
 #LOAD cog
