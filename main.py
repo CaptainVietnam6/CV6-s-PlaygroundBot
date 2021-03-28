@@ -95,11 +95,11 @@ async def ping(ctx):
 #SERVER COLOR HEX CODE REMINDER THINGY
 @client.command(aliases = ["serhexcode"])
 async def _serverhexcode(ctx):
-    await ctx.send("the server theme hex code is #ffa500")
+    await ctx.send("the server theme hex code is **#31a9ff** (this is the average colour of the gradient in our pfp)")
 
 
 #defines bot color for use in embeds
-bot_color = 0xffa500
+bot_color = 0x31a9ff
 
 
 '''END OF IMPORTANT STUFF, DEALS WITH BOT AND INTERNAL COMMANDS'''
@@ -107,7 +107,7 @@ bot_color = 0xffa500
 '''START OF MODERATION COMMANDS'''
 
 
-#chat purge command cleared out as suspicion of passing rate limit
+#chat purge command cleared out as suspicion of passing rate limit and causing issues
 '''
 #CHAT PURGE COMMAND
 @client.command(aliases = ["clear", "Clear", "Purge", "purge"])
@@ -122,17 +122,33 @@ async def _chat_clear(ctx, amount = 100):
 '''
 
 
-#AUTOROLE
+#AUTOROLE AND MEMBER JOIN WELCOME
 @client.event
 async def on_member_join(member):
     role = discord.utils.get(member.guild.roles, name = "Playground Member")
     channel = client.get_channel(815915068654223371)
+    channel2 = client.get_channel(815935593191964713)
     mention = member.mention
 
+    #autorole
     await member.add_roles(role)
     print("AutoRole: added a role to member")
+
+    #welcomes people in #welcome
     await channel.send(f"{mention} Welcome to CaptainVietnam6's playground! please have a look in <#815945790341775391> for our rules and <#816253845758803992> to give yourself some roles!")
-    await channel.send("https://tenor.com/view/penguin-hello-hi-hey-there-cutie-gif-3950966")
+    welcome_gifs = [
+        "https://media.giphy.com/media/xUPGGDNsLvqsBOhuU0/giphy.gif",
+        "https://media.giphy.com/media/3o6ZtpxSZbQRRnwCKQ/giphy.gif",
+        "https://media.giphy.com/media/H1TKAv5I5AOYcD7vxq/giphy.gif",
+        "https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif",
+        "https://tenor.com/view/welcome-waving-hi-hello-baby-yoda-gif-16022297",
+        "https://tenor.com/view/hello-hi-duck-cute-kawaii-gif-11820295",
+        "https://tenor.com/view/penguin-hello-hi-hey-there-cutie-gif-3950966"
+    ]
+    await channel.send(random.choice(welcome_gifs))
+
+    #alerts captain in #admin-discussions that someone joined
+    await channel2.send(f"<@467451098735837186> {mention} has joined the server")
 
 
 #SEND BOT INVITE LINK COMMAND
@@ -282,8 +298,10 @@ async def _join(ctx):
 
     if voice and voice.is_connected():
         await voice.move_to(channel)
+        await ctx.send("I have joined your voice channel")
+        print("CV6's PlaygroundBot joined a voice channel")
     else:
-        voice = await channel.connect()
+        await channel.connect()
         await ctx.send("I have joined your voice channel")
         print("CV6's PlaygroundBot joined a voice channel")
 
