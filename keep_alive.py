@@ -8,7 +8,7 @@ app = Flask("")
 
 @app.route("/")
 def home():
-    return "CV6's PlaygroundBot is online on webserver"
+    return "CV6's PlaygroundBot is online on DevServer"
 
 def run():
     app.run(host = "0.0.0.0", port = 8080)

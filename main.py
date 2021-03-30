@@ -161,6 +161,20 @@ async def _sendbotinvite(ctx):
     await ctx.send("https://discord.com/api/oauth2/authorize?client_id=816184765065199667&permissions=0&scope=bot")
 
 
+#MEMBER ID GET
+@client.command(aliases = ["id", "ID", "Id"])
+async def _get_member_id(ctx):
+    author_name = ctx.author.display_name
+    user_id = ctx.author.id
+    embed = discord.Embed(
+        title = "Requested User ID",
+        description = f"{user_id}",
+        color = bot_color
+    )
+    embed.set_footer(text = f"Requested by {author_name}")
+    await ctx.send(embed = embed)
+
+
 #RULES COMMAND
 @client.command(aliases = ["rules", "Rules"])
 @cooldown(1, 30, BucketType.default)
@@ -179,15 +193,94 @@ async def _therules(ctx):
 #HELP COMMAND
 @client.group(invoke_without_command = True, aliases = ["help", "Help"])
 async def _help(ctx):
+    #sends the help directory in server channel
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Help command categories**",
         description = "**These are the commands you can run to see the list of commands in each category.**\n\nFun commands: **cv6 help fun**\nMusic commands: **cv6 help music**\nSoundboard commands: **cv6 help sb**\nGame commands: **cv6 help game**\nEmoji commands: **cv6 help emoji**\nModeration commands: **cv6 help mod**\n",
         color = bot_color
     )
-    embed.set_footer(text = f"Requested by {author_name}")
+    embed.set_footer(text = f"Requested by {author_name}, you should also recieve a DM with all the command lists")
     await ctx.send(embed = embed)
+    '''
+    #sends all help command lists in person's DMs
+    channel = await discord.Member.create_dm()
+    def help_fun_dm():
+        author_name = ctx.author.display_name
+        embed = discord.Embed(
+            title = "**Fun/responses related commands list**",
+            description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**\nDream banned lmao: **cv6 dreamban**\nDM user: **cv6 dm {tag person} {message}**",
+            color = bot_color
+        )
+        embed.set_footer(text = f"Requested by {author_name}")
+        channel.send(embed = embed)
 
+    def help_music_dm():
+        author_name = ctx.author.display_name
+        embed = discord.Embed(
+            title = "**Music related commands list**",
+            description = "**These are commands that relate to music features of CV6's PlaygroundBot**\n\nJoin VC: **cv6 join**\nLeave VC: **cv6 leave**\nPlay song: **cv6 play (youtube url)**\nQueue song: **cv6 queue (youtube url)**\nPause music: **cv6 pause**\nResume music: **cv6 resume**\nStop music: **cv6 stop**\n",
+            color = bot_color
+        )
+        embed.set_footer(text = f"Requested by {author_name}")
+        channel.send(embed = embed)
+
+    def help_sb_dm():
+        author_name = ctx.author.display_name
+        embed = discord.Embed(
+            title = "**Soundboard related commands list**",
+            description = "**These are commands that relate to voice channel soundboard features of CV6's PlaygroundBot**\n\nJoin VC: **cv6 join**\nLeave VC: **cv6 leave**\nAirhorn: **cv6 sb airhorn**\nAli-a intro: **cv6 sb alia**\nBegone thot: **cv6 sb begonethot**\nDamn son where'd you find this: **cv6 sb damnson**\nDankstorm: **cv6 sb dankstorm**\nDeez nuts: **cv6 sb deeznuts**\nDeja Vu: **cv6 sb dejavu**\nLook at this dude: **cv6 sb dis_dude**\nAnother fag left the chat: **cv6 sb fleft**\nFart: **cv6 sb fart**\nHah gaaayyy: **cv6 sb hahgay**\nIt's called hentai and it's art: **cv6 sb henart**\nIlluminati song: **cv6 sb illuminati**\nBitch Lasagna: **cv6 sb lasagna**\nLoser: **cv6 sb loser**\nNoob: **cv6 sb noob**\nOof sound: **cv6 sb oof**\nPickle Rick: **cv6 sb picklerick**\nNice: **cv6 sb nice**\nWhy don't we just relax and turn on the radio: **cv6 sb radio**\nRick roll: **cv6 sb rickroll**\nThis is sparta: **cv6 sb sparta**\nTitanic flute fail: **cv6 sb titanic**\nGTA V Wasted: **cv6 sb wasted**\nWide Putin: **cv6 wideputin**\nWubba lubba dub dub: **cv6 sb wubba**\n",
+            color = bot_color
+        )
+        embed.set_footer(text = f"Requested by {author_name}")
+        channel.send(embed = embed)
+
+    def help_game_dm():
+        author_name = ctx.author.display_name
+        embed = discord.Embed(
+            title = "**Game related commands list**",
+            description = "**These are commands that relate to game features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball (your question)**\nDice command, returns 1-6: **cv6 dice**\nFranklin roast meme: **cv6 loc**\nRock Paper Scissors: **cv6 rps (rock, paper, or scissors)**\nMeme command: **cv6 meme**\nHentai command: **cv6 hentai**\n",
+            color = bot_color
+        )
+        embed.set_footer(text = f"Requested by {author_name}")
+        channel.send(embed = embed)
+
+    def help_emoji_dm():
+        author_name = ctx.author.display_name
+        embed = discord.Embed(
+            title = "**Emoji related commadns list**",
+            description = "**The commands with an $ have an auto detection feature to detect a certain keyword in your message**\n\nSo fake$: **cv6 fake**\nX to doubt$: **cv6 doubt**\nStonks$: **cv6 stonks**\nSimp pill$: **cv6 simp**\nUwU*: **cv6 uwu**\nWat: **cv6 wat**\nAdmin abooz: **cv6 abooz**\n60s Timer$: **cv6 timer**\nThats racist$: **cv6 racist**\nPolice$: **cv6 police**\nF-spam emoji: **cv6 fpsam**\nClap emoji: **cv6 clap**\nYou tried: **cv6 youtried**\nPython logo: **cv6 python**\nPepe pog: **cv6 pepepog**\nGay flag$: **cv6 gay**\nBisexual flag$: **cv6 bisexual**\nTrans flag$: **cv6 trans**",
+            color = bot_color
+        )
+        embed.set_footer(text = f"Requested by {author_name}")
+        channel.send(embed = embed)
+
+    def help_mod_dm():
+        author_name = ctx.author.display_name
+        embed = discord.Embed(
+            title = "**Moderation related commands list**",
+            description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nUser ID: **cv6 id {tag user}**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nTime command: **cv6 time**\nHelp directory: **cv6 help**",
+            color = bot_color
+        )
+        embed.set_footer(text = f"Requested by {author_name}")
+        channel.send(embed = embed)
+
+    #sends each list to requester's DM
+    await asyncio.sleep(float(0.5))
+    help_fun_dm() #sends fun commands list
+    await asyncio.sleep(float(0.15))
+    help_music_dm() #sends music commands list
+    await asyncio.sleep(float(0.15))
+    help_sb_dm() #sends soundboard command list
+    await asyncio.sleep(float(0.15))
+    help_game_dm() #sends game commands list
+    await asyncio.sleep(float(0.15))
+    help_emoji_dm() #sends emoji commands list
+    await asyncio.sleep(float(0.15))
+    help_mod_dm() #sends mod commands list
+    await asyncio.sleep(float(0.15))
+    await ctx.send("Above are all the command lists for CV6's PlaygroundBot, keep in mind this DM feature is still **in beta** and will be subject to changes and updates without further notice")
+    '''
 #HELP - FUN COMMANDS
 @_help.command(aliases = ["fun", "Fun"])
 async def _help_fun(ctx):
@@ -254,7 +347,7 @@ async def _help_moderation(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Moderation related commands list**",
-        description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nTime command: **cv6 time**\nHelp directory: **cv6 help**\n",
+        description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nUser ID: **cv6 id {tag user}**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nTime command: **cv6 time**\nHelp directory: **cv6 help**\n",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -282,6 +375,17 @@ async def _captswebsite(ctx):
     await ctx.send("Sending website...")
     await asyncio.sleep(float(1.5))
     await ctx.send("https://Basic-Website-7.itzkiettttt.repl.co")
+
+
+#TEST TO SEE WTF DISCORD.MEMBER IS
+@client.command(aliases = ["dmemtest"])
+async def _wtf_is_discord_member(ctx, member: discord.Member, *, user_message):
+    channel = await member.create_dm()
+    await channel.send(user_message)
+    print(channel)
+    print(member)
+    await ctx.send(channel)
+    await ctx.send(member)
 
 
 '''END OF TEST-BED COMMANDS OR COMMANDS FOR TESTING'''
@@ -456,7 +560,7 @@ async def _stop(ctx):
         await ctx.send("Music can't be stopped if there isn't music playing")
 
 
-#VOICE CHANNEL MUSIC queue
+#VOICE CHANNEL MUSIC QUEUE
 #this command is for music to be queued up if you use the "cv6 play" multiple times while music is still playing
 queues = {}
 
