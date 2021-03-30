@@ -340,7 +340,7 @@ async def _play(ctx, url: str):
             song_path = os.path.abspath(os.path.realpath("Queue") + "//" + first_file)
             
             if length != 0:
-                print("Sone finished playing, loading next song\n")
+                print("Song finished playing, loading next song\n")
                 print(f"Number of songs still in queue: {still_queue}")
                 is_song_there = os.path.isfile("song.mp3")
                 if is_song_there: 
@@ -1215,17 +1215,17 @@ async def _pi_digits_calc(ctx, pi_digits):
     if DIGITS > 0 and DIGITS <= 2000:
         def pi_digits(x):
             #Generate x digits of Pi
-            k,a,b,a1,b1 = 2,4,1,12,4
+            k, a, b, a1, b1 = 2, 4, 1, 12, 4
             while x > 0:
-                p,q,k = k * k, 2 * k + 1, k + 1
-                a,b,a1,b1 = a1, b1, p*a + q*a1, p*b + q*b1
+                p , q, k = k * k, 2 * k + 1, k + 1
+                a, b, a1, b1 = a1, b1, p * a + q * a1, p * b + q * b1
                 d,d1 = a/b, a1/b1
 
                 while d == d1 and x > 0:
                     yield int(d)
                     x -= 1
-                    a,a1 = 10*(a % b), 10*(a1 % b1)
-                    d,d1 = a/b, a1/b1
+                    a, a1 = 10 * (a % b), 10 * (a1 % b1)
+                    d, d1 = a/b, a1/b1
 
         digits = [str(n) for n in list(pi_digits(DIGITS))]
         pi_output = "%s.%s\n" % (digits.pop(0), "".join(digits))
