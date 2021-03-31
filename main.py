@@ -202,10 +202,9 @@ async def _help(ctx):
     )
     embed.set_footer(text = f"Requested by {author_name}, you should also recieve a DM with all the command lists")
     await ctx.send(embed = embed)
-    '''
+    
     #sends all help command lists in person's DMs
-    channel = await discord.Member.create_dm()
-    def help_fun_dm():
+    async def help_fun_dm():
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Fun/responses related commands list**",
@@ -213,9 +212,9 @@ async def _help(ctx):
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
-        channel.send(embed = embed)
+        await ctx.author.send(embed = embed)
 
-    def help_music_dm():
+    async def help_music_dm():
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Music related commands list**",
@@ -223,9 +222,9 @@ async def _help(ctx):
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
-        channel.send(embed = embed)
+        await ctx.author.send(embed = embed)
 
-    def help_sb_dm():
+    async def help_sb_dm():
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Soundboard related commands list**",
@@ -233,9 +232,9 @@ async def _help(ctx):
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
-        channel.send(embed = embed)
+        await ctx.author.send(embed = embed)
 
-    def help_game_dm():
+    async def help_game_dm():
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Game related commands list**",
@@ -243,9 +242,9 @@ async def _help(ctx):
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
-        channel.send(embed = embed)
+        await ctx.author.send(embed = embed)
 
-    def help_emoji_dm():
+    async def help_emoji_dm():
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Emoji related commadns list**",
@@ -253,9 +252,9 @@ async def _help(ctx):
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
-        channel.send(embed = embed)
+        await ctx.author.send(embed = embed)
 
-    def help_mod_dm():
+    async def help_mod_dm():
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Moderation related commands list**",
@@ -263,24 +262,25 @@ async def _help(ctx):
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
-        channel.send(embed = embed)
+        await ctx.author.send(embed = embed)
 
     #sends each list to requester's DM
-    await asyncio.sleep(float(0.5))
-    help_fun_dm() #sends fun commands list
+    await asyncio.sleep(float(0.25))
+    await help_fun_dm() #sends fun commands list
     await asyncio.sleep(float(0.15))
-    help_music_dm() #sends music commands list
+    await help_music_dm() #sends music commands list
     await asyncio.sleep(float(0.15))
-    help_sb_dm() #sends soundboard command list
+    await help_sb_dm() #sends soundboard command list
     await asyncio.sleep(float(0.15))
-    help_game_dm() #sends game commands list
+    await help_game_dm() #sends game commands list
     await asyncio.sleep(float(0.15))
-    help_emoji_dm() #sends emoji commands list
+    await help_emoji_dm() #sends emoji commands list
     await asyncio.sleep(float(0.15))
-    help_mod_dm() #sends mod commands list
+    await help_mod_dm() #sends mod commands list
     await asyncio.sleep(float(0.15))
-    await ctx.send("Above are all the command lists for CV6's PlaygroundBot, keep in mind this DM feature is still **in beta** and will be subject to changes and updates without further notice")
-    '''
+    await ctx.author.send("Above are all the command lists for CV6's PlaygroundBot, keep in mind this DM feature is still **in beta** and will be subject to changes and updates without further notice")
+    await ctx.send("I sent you a DM with all the command lists")
+    
 #HELP - FUN COMMANDS
 @_help.command(aliases = ["fun", "Fun"])
 async def _help_fun(ctx):
@@ -360,6 +360,7 @@ async def _help_moderation(ctx):
 '''END OF MODERATION COMMANDS'''
 
 '''START OF TEST-BED COMMANDS OR COMMANDS FOR TESTING'''
+#NONE OF THESE COMMANDS ARE ACTUAL USEFUL COMMANDS, JUST HERE FOR TESTING
 
 
 #TEST COMMAND
@@ -384,9 +385,30 @@ async def _wtf_is_discord_member(ctx, member: discord.Member, *, user_message):
     await channel.send(user_message)
     print(channel)
     print(member)
+    print(ctx)
     await ctx.send(channel)
     await ctx.send(member)
+    await ctx.send(ctx)
 
+
+#TEST TO SEE IF YOU CAN SEND A MESSAGE TO USER UPON COMMAND BEING CALLED
+@client.command(aliases = ["helptestcommand"])
+async def _help_test_command(ctx):
+    #channel = await ctx.author.create_dm()
+
+    async def help_list_dm():
+        author_name = ctx.author.display_name
+        embed = discord.Embed(
+            title = "Title",
+            description = "Command list goes here",
+            color = bot_color
+        )
+        embed.set_footer(text = f"Requested by {author_name}")
+        #channel.send(embed = embed)
+        await ctx.author.send(embed = embed)
+    
+    await help_list_dm()
+    
 
 '''END OF TEST-BED COMMANDS OR COMMANDS FOR TESTING'''
 
@@ -1518,7 +1540,7 @@ async def _random_annoyed(message):
         return
     else:
         if random.randint(0, 100) <= 1:
-            await message.channel.send(f"<@{mention}> {annoyed_responses}")
+            await message.channel.send(f"<@{mention}> {annoyed_responses} (btw there is a random 1% chance i get annoyed at you so congrats ur lucky)")
 
 
 #REPLIES STFU COMMAND
@@ -1551,6 +1573,20 @@ async def _ramdon_stfu_detect(message):
             await message.channel.send(f"<@{mention}> {stfu_responses}")
         if "SHUT UP" in message.content:
             await message.channel.send(f"<@{mention}> {stfu_responses}")
+
+
+#REPLIES WITH SUS GIF WHEN SOMEONE SAYS SUS
+@client.listen("on_message")
+async def _sus_gif_send(message):
+    if message.author.bot:
+        return
+    else:
+        if "sus" in message.content:
+            await message.channel.send("https://tenor.com/view/sus-suspect-among-us-gif-18663592")
+        if "Sus" in message.content:
+            await message.channel.send("https://tenor.com/view/sus-suspect-among-us-gif-18663592")
+        if "SUS" in message.content:
+            await message.channel.send("https://tenor.com/view/sus-suspect-among-us-gif-18663592")
 
 
 '''END OF RESPONSES OR RELATED COMMANDS'''
