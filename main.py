@@ -294,17 +294,17 @@ async def _help(ctx):
     #sends each list to requester's DM
     await asyncio.sleep(float(0.25))
     await help_fun_dm() #sends fun commands list
-    await asyncio.sleep(float(0.15))
+    await asyncio.sleep(float(0.25))
     await help_music_dm() #sends music commands list
-    await asyncio.sleep(float(0.15))
+    await asyncio.sleep(float(0.25))
     await help_sb_dm() #sends soundboard command list
-    await asyncio.sleep(float(0.15))
-    await help_game_dm() #sends game commands list
-    await asyncio.sleep(float(0.15))
+    await asyncio.sleep(float(0.25))
+    await help_game_dm() #sends Game commands list
+    await asyncio.sleep(float(0.25))
     await help_emoji_dm() #sends emoji commands list
-    await asyncio.sleep(float(0.15))
+    await asyncio.sleep(float(0.25))
     await help_mod_dm() #sends mod commands list
-    await asyncio.sleep(float(0.15))
+    await asyncio.sleep(float(0.25))
     await ctx.author.send("Above are all the command lists for CV6's PlaygroundBot, keep in mind this DM feature is still **in beta** and will be subject to changes and updates without further notice")
     await ctx.send("I sent you a DM with all the command lists")
     
