@@ -1,3 +1,17 @@
+'''
+Copyright (©) 2021 Kiet Pham <kiet.riley2005@gmail.com>
+This software/program has a copyright license, more information is in the 'LICENSE' file
+IF YOU WANT TO USE/COPY/MODIFY/REPRODUCE/RE-DISTRIBUTE THIS PROGRAM, YOU MUST INCLUDE A COPY OF THE LICENSE
+
+Author Name: Kiet Pham
+Author Contact: kiet.riley2005@gmail.com
+Discord: CaptainVietnam6#7932
+Discord Server: https://discord.gg/3z76p8H5yj
+GitHub: https://github.com/CaptainVietnam6
+Instagram: @itz_kietttttttttt
+Program Status: ACTIVE
+'''
+
 #imports related to discord or discord packages
 import discord
 from discord.ext import commands
@@ -175,6 +189,19 @@ async def _get_member_id(ctx):
     await ctx.send(embed = embed)
 
 
+#EMERGENCY BOT STOP COMMAND
+@client.command(aliases = ["exit", "forceexit"])
+@commands.has_any_role("Playground Owner")
+async def _force_exit(ctx):
+    author_name = ctx.author.display_name
+    print(f"Emergency Stop/Exit command triggered by {author_name}")
+    await ctx.send(f"**Emergency Stop/Exit command triggered by {author_name}**")
+    #await asyncio.sleep(float(0.5))
+    #await client.change_presence(status = discord.Status.idle)
+    await asyncio.sleep(float(0.5))
+    exit()
+
+
 #RULES COMMAND
 @client.command(aliases = ["rules", "Rules"])
 @cooldown(1, 30, BucketType.default)
@@ -208,7 +235,7 @@ async def _help(ctx):
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Fun/responses related commands list**",
-            description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**\nDream banned lmao: **cv6 dreamban**\nDM user: **cv6 dm {tag person} {message}**",
+            description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**\nDream banned lmao: **cv6 dreamban**\nDM user: **cv6 dm {tag person} {message}**\nFuck me: **cv6 fuckme**\nRandomly pings someone: **cv6 someone**",
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
@@ -280,6 +307,7 @@ async def _help(ctx):
     await asyncio.sleep(float(0.15))
     await ctx.author.send("Above are all the command lists for CV6's PlaygroundBot, keep in mind this DM feature is still **in beta** and will be subject to changes and updates without further notice")
     await ctx.send("I sent you a DM with all the command lists")
+    
     
 #HELP - FUN COMMANDS
 @_help.command(aliases = ["fun", "Fun"])
@@ -1331,7 +1359,7 @@ async def _sponsormefunnaeblueish(ctx):
     await ctx.send("Oh and also HAVE U HEARD ABOUT RAYCON EARBUDS???? THEYRE JUST SAMSUNG GALAXY EARBUDS BUT FATTER AND LESS EXPENSIVE GO BUY THEM WITH MY DISCOUNT CODE AT RAYCON.COM/IFUCKEDURMOM I REPEAT RAYCON.COM/IFUCKEDURMOM GO BUY THEM RIGHT NOW")
 
 
-# CALCULATE COMMAND TO REQUESTED DIGITS
+#CALCULATE COMMAND TO REQUESTED DIGITS OF PI
 @client.command(aliases = ["pi", "Pi", "PI", "π"])
 async def _pi_digits_calc(ctx, pi_digits):
     DIGITS = int(pi_digits)
@@ -1406,6 +1434,22 @@ async def _hsttime(ctx):
 async def _dm_user_(ctx, member: discord.Member, *, user_message):
     channel = await member.create_dm()
     await channel.send(user_message)
+
+
+#CV6 F-ME COMMAND FUNNY
+@client.command(aliases = ["fuckme", "Fuckme", "FuckMe"])
+async def _fmecommandlol(ctx):
+    await ctx.send("i made you pregnate oops")
+
+
+#RANDOMLY PINGS SOMEONE COMMAND
+@client.command(aliases = ["random", "Random", "someone", "Someone"])
+@cooldown(1, 60, BucketType.user)
+async def _random_ping(ctx):
+    channel = ctx.channel
+    random_member = random.choice(channel.guild.members)
+    await channel.send(f"@{random_member}")
+    print("someone used the random ping command")
 
 
 #BELOW HERE IS THE ALWAYS ACTIVE CLIENT.LISTEN AND ON_MESSAGE COMMANDS
@@ -1521,7 +1565,7 @@ async def _detects_code2(message):
 
 
 #RANDOM CHANCE ANNOYED RESPONSE THING
-#whenever the bot detects a message by a person there is a 2% chance it replies
+#whenever the bot detects a message by a person there is a 0.75% chance it replies
 @client.listen("on_message")
 async def _random_annoyed(message):
     mention = message.author.id
@@ -1539,8 +1583,9 @@ async def _random_annoyed(message):
     if message.author.bot:
         return
     else:
-        if random.randint(0, 100) <= 1:
-            await message.channel.send(f"<@{mention}> {annoyed_responses} (btw there is a random 1% chance i get annoyed at you so congrats ur lucky)")
+        if mention != 467451098735837186:
+            if random.randint(0, 134) <= 1:
+                await message.channel.send(f"<@{mention}> {annoyed_responses} (btw there is a random 1% chance i get annoyed at you so congrats ur lucky)")
 
 
 #REPLIES STFU COMMAND
