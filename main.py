@@ -202,6 +202,21 @@ async def _force_exit(ctx):
     exit()
 
 
+#VOTEKICK COMMAND
+@client.command(aliases = ["votekick", "Votekick"])
+async def _votekick(ctx, user_tag, *, kick_reason):
+    thumbs_down = "👎"
+    thumbs_up = "👍"
+    embed = discord.Embed(
+        title = "Votekick Member",
+        description = f"Votekick for member {user_tag}\nReason: {kick_reason}",
+        color = bot_color
+    )
+    embed_message = await ctx.send(embed = embed)
+    await embed_message.add_reaction(thumbs_up)
+    await embed_message.add_reaction(thumbs_down)
+
+
 #RULES COMMAND
 @client.command(aliases = ["rules", "Rules"])
 @cooldown(1, 30, BucketType.default)
@@ -214,6 +229,20 @@ async def _therules(ctx):
     )
     embed.set_footer(text = f"Bot and rules made with love by CaptainVietnam6{heart_emoji}")
     embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/815915612378890280/816274373089951764/20210301_211313.jpg")
+    await ctx.send(embed = embed)
+
+
+#ADVERTISING RULES COMMAND
+@client.command(aliases = ["advertise", "Advertise", "advertiserules", "Advertiserules", "AdvertiseRules"])
+@cooldown(1, 20, BucketType.default)
+async def _advertise_rules(ctx):
+    heart_emoji = "\u2764\ufe0f"
+    embed = discord.Embed(
+        title = "Advertising rules",
+        description = "1. No spamming advertisement.\n2. No sending it in multiple channels.\n3. Send advertisements only in <#816168971032068126>\n4. Send only one advertisement per day (24 hours)\n5. No advertising server raiding, or anything againse eula or tos",
+        color = bot_color
+    )
+    embed.set_footer(text = f"Bot and rules made with love by CaptainVietnam6{heart_emoji}")
     await ctx.send(embed = embed)
 
 
@@ -235,7 +264,7 @@ async def _help(ctx):
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Fun/responses related commands list**",
-            description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**\nDream banned lmao: **cv6 dreamban**\nDM user: **cv6 dm {tag person} {message}**\nFuck me: **cv6 fuckme**\nRandomly pings someone: **cv6 someone**",
+            description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**\nDream banned lmao: **cv6 dreamban**\nDM user: **cv6 dm {tag person} {message}**\nFuck me: **cv6 fuckme**\nRandomly pings someone: **cv6 someone**\nSend profile of a bitch: **cv6 bitch**\nPenis command: **cv6 penis**\nVagina command: **cv6 vagina**\nI like trains: **cv6 trains**",
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
@@ -285,7 +314,7 @@ async def _help(ctx):
         author_name = ctx.author.display_name
         embed = discord.Embed(
             title = "**Moderation related commands list**",
-            description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nUser ID: **cv6 id {tag user}**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nTime command: **cv6 time**\nHelp directory: **cv6 help**",
+            description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nUser ID: **cv6 id {tag user}**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nVotekick: **cv6 votekick (tag member) (reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nTime command: **cv6 time**\nHelp directory: **cv6 help**",
             color = bot_color
         )
         embed.set_footer(text = f"Requested by {author_name}")
@@ -315,7 +344,7 @@ async def _help_fun(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Fun/responses related commands list**",
-        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**\nDream banned lmao: **cv6 dreamban**\nDM user: **cv6 dm {tag person} {message}**",
+        description = "**These are commands that relate to fun or responses features of CV6's PlaygroundBot**\n\n8ball command: **cv6 8ball {question}**\nDice command: **cv6 dice**\nFranklin roast meme: **/loc**\nMeme command: **cv6 meme**\nHow-to-use-google: **cv6 google**\nServer daddy: **cv6 daddy**\nBenice to staff: **cv6 benice**\nSend thigh pics: **cv6 thighpics**\nZeroTwo GIF: **cv6 zerotwo**\nDictionary: **cv6 dictionary {word}**\nSynonyms: **cv6 synonym {word}**\nAntonyms: **cv6 antonym {word}**\nRepeat after user: **cv6 repeat**\nWhat-a-legend: **cv6 legend**\nCapt Twitch link: **cv6 twitch**\nEw lightmode: **cv6 lightmode**\nReply spam: **cv6 spam {word}**\nPrint fancy text: **cv6 print {word}**\nSpeedrun profile: **cv6 speedrun {user name}**\nShut up GIF: **cv6 shut**\nDweam: **cv6 dweam**\nSends nothing: **cv6 nothing**\nDiscordmod meme: **cv6 discordmod**\nCusswords: **cv6 cusswords**\nFunny Pinged: **cv6 pinged**\nFair: **fair**\nPog: **pog**\nreee: **cv6 reee**\nSponsorMe: **cv6 sponsorme**\nCalculate Pi: **cv6 pi {enter digits}**\nDream banned lmao: **cv6 dreamban**\nDM user: **cv6 dm {tag person} {message}**\nFuck me: **cv6 fuckme**\nRandomly pings someone: **cv6 someone**\nSend profile of a bitch: **cv6 bitch**\nPenis command: **cv6 penis**\nVagina command: **cv6 vagina**\nI like trains: **cv6 trains**",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -375,7 +404,7 @@ async def _help_moderation(ctx):
     author_name = ctx.author.display_name
     embed = discord.Embed(
         title = "**Moderation related commands list**",
-        description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nUser ID: **cv6 id {tag user}**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nTime command: **cv6 time**\nHelp directory: **cv6 help**\n",
+        description = "**These are commands that relate to moderation features of CV6's PlaygroundBot, most require administrative powers**\n\nWelcome command: **cv6 welcome**\nDescription command: **cv6 description**\nBot description: **cv6 botdesc**\nUser ID: **cv6 id {tag user}**\nKick command: **cv6 kick (tag member, reason)**\nBan command: **cv6 ban (tag member, reason)**\nVotekick: **cv6 votekick (tag member) (reason)**\nPurge/clear chat: **cv6 clear (number of messages)**\nBot invite link: **cv6 botinvite**\nTime command: **cv6 time**\nHelp directory: **cv6 help**",
         color = bot_color
     )
     embed.set_footer(text = f"Requested by {author_name}")
@@ -1450,6 +1479,54 @@ async def _random_ping(ctx):
     random_member = random.choice(channel.guild.members)
     await channel.send(f"@{random_member}")
     print("someone used the random ping command")
+
+
+#BITCH COMMAND, SENDS A PIC OF ZIYUNS PROFILE
+@client.command(aliases = ["bitch", "Bitch"])
+@cooldown(3, 120, BucketType.default)
+async def _bitch_funnae(ctx):
+    await ctx.send("https://cdn.discordapp.com/attachments/816175323766980618/835786728350285854/unknown.png")
+    await asyncio.sleep(float(0.5))
+    await ctx.send("lmao")
+
+
+#I LIKE TRAINS GIF SEND
+@client.command(aliases = ["trains", "Trains", "Train", "train"])
+async def _iliketrains_gif(ctx):
+    await ctx.send("https://tenor.com/view/funny-iliketrains-trains-gif-4905803")
+
+
+#PP & V SEND FUNNAE
+#why did i even accept this command request?
+@client.command(aliases = ["pp", "PP", "penis", "Penis"])
+async def _pp_funny_command(ctx):
+    pp_responses = (
+        "put it in me daddy :)",
+        "boner",
+        "cock",
+        "The penis is the male sex organ, reaching its full size during puberty. In addition to its sexual function, the penis acts as a conduit for urine to leave the body. The penis is made of several parts: • Glans (head) of the penis: In uncircumcised men, the glans is covered with pink, moist tissue called mucosa.",
+        "https://www.dictionary.com/browse/penis?s=t",
+        "what you don't have",
+        "mines is big, yours is small",
+    )
+    pp_send = random.choice(pp_responses)
+    await ctx.send(pp_send)
+
+@client.command(aliases = ["vagina", "Vagina"])
+async def _v_funny_command(ctx):
+    v_responses = (
+        "MY VAGINA IS BLEEDING AHHHHH IT HURTS SO MUCH AND THERES SO MUCH BLOOD OMFG PERIODS SUCK",
+        "The **FUCK HOLE**",
+        "what you'll never get",
+        "The hole where pee comes out of",
+        "The hole where poop comes out of",
+        "The hole where a grown sperm comes out of",
+        "The hole where a baby pops out",
+        "what your girlfriend doesn't have",
+        "The vagina is an elastic, muscular canal with a soft, flexible lining that provides lubrication and sensation. The vagina connects the uterus to the outside world. The vulva and labia form the entrance, and the cervix of the uterus protrudes into the vagina, forming the interior end.",
+    )
+    v_send = random.choice(v_responses)
+    await ctx.send(v_send)
 
 
 #BELOW HERE IS THE ALWAYS ACTIVE CLIENT.LISTEN AND ON_MESSAGE COMMANDS
