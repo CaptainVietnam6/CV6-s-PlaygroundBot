@@ -228,7 +228,7 @@ async def _therules(ctx):
         color = bot_color
     )
     embed.set_footer(text = f"Bot and rules made with love by CaptainVietnam6{heart_emoji}")
-    embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/815915612378890280/816274373089951764/20210301_211313.jpg")
+    embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/816175323766980618/836202005441544192/20210328_004613_0000.png")
     await ctx.send(embed = embed)
 
 
@@ -1285,9 +1285,15 @@ async def _antonymcommand(ctx, user_antonym_request):
 @client.command(aliases = ["repeat", "Repeat", "say", "Say"])
 @cooldown(5, 60, BucketType.default)
 async def _repeat_after_user(ctx, *, user_repeat_input):
-    await ctx.send(f"{user_repeat_input}")
+    if "@everyone" in user_repeat_input:
+        await ctx.send("Cannot repeat mass ping")
+    else:
+        if "@here" in user_repeat_input:
+            await ctx.send("Cannot repeat mass ping")
+        else:
+            await ctx.send(f"{user_repeat_input}")
 
-
+    
 #LEGEND REPLY COMMAND THINGY
 @client.command(aliases = ["Legend", "legend"])
 async def _legendlol(ctx):
@@ -1313,12 +1319,18 @@ async def _ewlightmode(ctx):
 @cooldown(1, 60, BucketType.default)
 async def _replyspam(ctx, *, user_spam_input):
     print("Someone activated the reply spam command")
-    for i in range(5):
-        await ctx.send(f"{user_spam_input}")
-        await asyncio.sleep(float(0.1))
-    await asyncio.sleep(float(0.25))
-    print("Reply spam command ended")
-    await ctx.send("Please wait 60 seconds to use this command again.")
+    if "@everyone" in user_spam_input:
+        await ctx.send("Cannot spam mass ping")
+    else:
+        if "@here" in user_spam_input:
+            await ctx.send("Cannot spam mass ping")
+        else:
+            for i in range(5):
+                await ctx.send(f"{user_spam_input}")
+                await asyncio.sleep(float(0.1))
+            await asyncio.sleep(float(0.25))
+            print("Reply spam command ended")
+            await ctx.send("Please wait 60 seconds to use this command again.")
 
 
 #PRINT COMMAND; SENDS A FANCY EMBED IMAGE WITH AUTHOR'S MESSAGE
@@ -1660,7 +1672,7 @@ async def _random_annoyed(message):
     if message.author.bot:
         return
     else:
-        if mention != 467451098735837186:
+        if mention != 467451098735837186: #makes it so that the bot doesn't respond to captain
             if random.randint(0, 134) <= 1:
                 await message.channel.send(f"<@{mention}> {annoyed_responses} (btw there is a random 1% chance i get annoyed at you so congrats ur lucky)")
 
