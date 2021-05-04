@@ -3,7 +3,7 @@ Copyright (c) 2021 Kiet Pham <kiet.riley2005@gmail.com>
 This software/program has a copyright license, more information is in the 'LICENSE' file
 IF YOU WANT TO USE/COPY/MODIFY/REPRODUCE/RE-DISTRIBUTE THIS PROGRAM, YOU MUST INCLUDE A COPY OF THE LICENSE
 
-Author Name: Kiet Pham
+Author Name: Kiet P.
 Author Contact: kiet.riley2005@gmail.com
 Discord: CaptainVietnam6#0001
 Discord Server: https://discord.gg/3z76p8H5yj
