@@ -9,7 +9,7 @@ Discord: CaptainVietnam6#0001
 Discord Server: https://discord.gg/3z76p8H5yj
 GitHub: https://github.com/CaptainVietnam6
 Instagram: @itz_kietttttttttt
-Program Status: ACTIVE
+Program Status: ACTIVE - FINALISED
 '''
 
 #imports related to discord or discord packages
