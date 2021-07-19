@@ -3,7 +3,7 @@ Copyright (c) 2021 Kiet Pham <kiet.riley2005@gmail.com>
 This software/program has a copyright license, more information is in the 'LICENSE' file
 IF YOU WANT TO USE/COPY/MODIFY/REPRODUCE/RE-DISTRIBUTE THIS PROGRAM, YOU MUST INCLUDE A COPY OF THE LICENSE
 
-Author Name: Kiet Pham
+Author Name: Kiet Pham & Kyla Lee
 Author Contact: kiet.riley2005@gmail.com
 Discord: CaptainVietnam6#0001
 Discord Server: https://discord.gg/3z76p8H5yj
@@ -227,7 +227,7 @@ async def _therules(ctx):
         description = "1. Use the correct channels, although quickly using bot commands in <#815915612378890280> is fine.\n2. Don't spam, use common sense, enforced by everyone.\n3. No nsfw unless in <#816243097716391956>.\n4. Keep your nickname respectful and unoffensive.\n5. Religion and politics are complex and controversial topics therefore should be best kept out of this server.\n6. No racial slurs or other racially offensive terms and or anything resembling it or meant to carry the same meaning.\n7. Be respectful to others, no discrimination unless it's meant as a joke and both parties reconise it as one.\n8. Head over to <#816253845758803992> to select your custom roles.\n9. Use common sense and you'll be fine, don't try find loopholes in my rules and don't be a smartass about it.",
         color = bot_color
     )
-    embed.set_footer(text = f"Bot and rules made with love by CaptainVietnam6{heart_emoji}")
+    embed.set_footer(text = f"Bot and rules made with love by CaptainVietnam6{heart_emoji} and Kyla {heart_emoji}")
     embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/816175323766980618/836202005441544192/20210328_004613_0000.png")
     await ctx.send(embed = embed)
 
@@ -242,7 +242,7 @@ async def _advertise_rules(ctx):
         description = "1. No spamming advertisement.\n2. No sending it in multiple channels.\n3. Send advertisements only in <#816168971032068126>\n4. Send only one advertisement per day (24 hours)\n5. No advertising server raiding, or anything againse eula or tos",
         color = bot_color
     )
-    embed.set_footer(text = f"Bot and rules made with love by CaptainVietnam6{heart_emoji}")
+    embed.set_footer(text = f"Bot and rules made with love by CaptainVietnam6 {heart_emoji} and Kyla {heart_emoji}")
     await ctx.send(embed = embed)
 
 
@@ -423,7 +423,7 @@ async def _help_moderation(ctx):
 #TEST COMMAND
 @client.command(aliases = ["ban", "Ban", "kick", "Kick", "mute", "Mute"])
 async def _repeat(ctx):
-    await ctx.send("shut up.")
+    await ctx.send("shut the fuck up.")
 
 
 #TEST COMMAND 2
@@ -605,7 +605,7 @@ async def _pause(ctx):
         print("Music paused")
         await ctx.send("Music paused")
     else:
-        print("Music wasn't playing but there was a request to pause music")
+        print("Music is not playing but there was a request to pause music")
         await ctx.send("There was no music wasn't playing so i can't pause it")
 
 
@@ -1000,6 +1000,10 @@ async def _8ball(ctx, *, user_question):
     author_name = ctx.author.display_name
     responses = [
         "As I see it, yes.",
+        "No.",
+        "Shut the fuck up.",
+        "It will happen in the near future",
+        "Tough luck",
         "Ask again later.",
         "Better not tell you now.",
         "Cannot predict now.",
@@ -1206,9 +1210,9 @@ async def _zerotwo(ctx):
     await ctx.send("bruh-")
     await asyncio.sleep(float(0.5))
     await ctx.send("https://tenor.com/view/darling-in-the-franxx-zero-two-dance-gif-14732606")
-    print("someone's being a simp")
+    print("someone's being a weeb")
     await asyncio.sleep(float(1.5))
-    await ctx.send("fuckin simp lmfao")
+    await ctx.send("fuckin weeb lmfao")
 
 
 #DICTIONARY COMMAND, GIVES YOU THE DEFINITION, SYNONYM, ANTONYM, AND LINK OF THE WORD MENTIONED
@@ -1480,7 +1484,7 @@ async def _dm_user_(ctx, member: discord.Member, *, user_message):
 #CV6 F-ME COMMAND FUNNY
 @client.command(aliases = ["fuckme", "Fuckme", "FuckMe"])
 async def _fmecommandlol(ctx):
-    await ctx.send("i made you pregnate oops")
+    await ctx.send("i made you pregnate oops o~o")
 
 
 #RANDOMLY PINGS SOMEONE COMMAND
@@ -1513,12 +1517,18 @@ async def _iliketrains_gif(ctx):
 @client.command(aliases = ["pp", "PP", "penis", "Penis"])
 async def _pp_funny_command(ctx):
     pp_responses = (
-        "put it in me daddy :)",
+        "put it in me daddy ;)",
+        "ahhhh",
         "boner",
         "cock",
         "The penis is the male sex organ, reaching its full size during puberty. In addition to its sexual function, the penis acts as a conduit for urine to leave the body. The penis is made of several parts: • Glans (head) of the penis: In uncircumcised men, the glans is covered with pink, moist tissue called mucosa.",
         "https://www.dictionary.com/browse/penis?s=t",
         "what you don't have",
+        "one millimeter defeater",
+        "one inch pinch",
+        "slong",
+        "chode",
+        "chunchy chungus",
         "mines is big, yours is small",
     )
     pp_send = random.choice(pp_responses)
@@ -1610,6 +1620,10 @@ async def _replygoodnight(message):
     if "Gn" in message.content:
         await message.channel.send("goodnight!")
     if "GN" in message.content:
+        await message.channel.send("goodnight!")
+    if "Good night" in message.content:
+        await message.channel.send("goodnight!")
+    if "good night" in message.content:
         await message.channel.send("goodnight!")
 
 
